@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grocery_pal.ui.SettingsController">
+   <center>
+      <SplitPane dividerPositions="0.15013404825737264" orientation="VERTICAL" BorderPane.alignment="CENTER">
+         <items>
+            <VBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="598.0">
+               <children>
+                  <Label contentDisplay="CENTER" text="Settings">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <TabPane tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Grocery List">
+                     <content>
+                        <TableView fx:id="grocTable" editable="true" tableMenuButtonVisible="true">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <columns>
+                              <TableColumn fx:id="colName" onEditCommit="#grocColEditCommit" prefWidth="75.0" text="Item Name" />
+                              <TableColumn fx:id="colDescription" onEditCommit="#grocColEditCommit" prefWidth="75.0" text="Description" />
+                              <TableColumn fx:id="colStoreURL" onEditCommit="#grocColEditCommit" prefWidth="96.0" text="Store Web Address" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </Tab>
+                  <Tab text="Preferred Merchants">
+                     <content>
+                        <TableView fx:id="merchTable" editable="true" tableMenuButtonVisible="true">
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <columns>
+                              <TableColumn fx:id="colMerchName" onEditCommit="#merchColEditCommit" prefWidth="75.0" text="Merchant Name" />
+                              <TableColumn fx:id="colURL" onEditCommit="#merchColEditCommit" prefWidth="75.0" text="URL" />
+                              <TableColumn fx:id="colRank" onEditCommit="#merchColEditCommit" prefWidth="75.0" text="Rank/Priority" />
+                           </columns>
+                        </TableView>
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </items>
+      </SplitPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu mnemonicParsing="false" text="Options">
+               <items>
+                  <MenuItem fx:id="stMenuItem" mnemonicParsing="false" onAction="#stMenuItemClick" text="Start Shopping" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="logoutMenuItem" mnemonicParsing="false" onAction="#logoutMenuItemClick" text="Logout" />
+                  <MenuItem mnemonicParsing="false" onAction="#closeMenuItemClick" text="Close" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="New">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#newGrocMenuItemCick" text="Grocery Item" />
+                  <MenuItem mnemonicParsing="false" onAction="#newMerchMenuItemCick" text="Preferred Merchant" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
